@@ -1,33 +1,19 @@
 import React from "react";
+import ToyCard from "./ToyCard";
 
-function ToyForm() {
+function ToyContainer({ toys, onDeleteToy, onUpdateToy }) {
   return (
-    <div className="container">
-      <form className="add-toy-form">
-        <h3>Create a toy!</h3>
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter a toy's name..."
-          className="input-text"
+    <div id="toy-collection">
+      {toys.map((toy) => (
+        <ToyCard 
+          key={toy.id} 
+          toy={toy} 
+          onDeleteToy={onDeleteToy} 
+          onUpdateToy={onUpdateToy} 
         />
-        <br />
-        <input
-          type="text"
-          name="image"
-          placeholder="Enter a toy's image URL..."
-          className="input-text"
-        />
-        <br />
-        <input
-          type="submit"
-          name="submit"
-          value="Create New Toy"
-          className="submit"
-        />
-      </form>
+      ))}
     </div>
   );
 }
 
-export default ToyForm;
+export default ToyContainer;
